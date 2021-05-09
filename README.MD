@@ -1,6 +1,5 @@
-# ToDoList
+# Vender and Order Tracker
 
-#### Vender and Order Tracker
 #### Learning Project for Epicodus class. C#/.NET MVC web application for a Vender/Order Tracker
 
 #### By Shanen Cross
