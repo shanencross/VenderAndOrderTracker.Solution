@@ -4,6 +4,7 @@ namespace VendorAndOrderTracker.Models
 {
   public class Vendor
   {
+    public int Id { get; }
     public string Name { get; }
     public string Description { get; }
     public List<Order> Orders { get; } = new List<Order>();
@@ -15,6 +16,7 @@ namespace VendorAndOrderTracker.Models
       Name = name;
       Description = description;
       _instances.Add(this);
+      Id = _instances.Count;
     }
 
     public void AddOrder(Order order)
