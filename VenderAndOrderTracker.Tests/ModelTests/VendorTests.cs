@@ -52,12 +52,12 @@ namespace VendorAndOrderTracker.ModelTests
       Order testOrder1 = new Order("Croissants", "30 boxes of butter croissants", 100.99f, "February 7, 2025");
       Order testOrder2 = new Order("Baguettes", "15 baguettes", 28.99f, "March 1, 2025");
       List<Order> expectedList = new List<Order> { testOrder1, testOrder2 };
-      List<Order> expectedList2 = new List<Order> { testOrder1, testOrder2 };
-
+      
       for (int i=0; i<testVendor.Orders.Count; i++)
       {
         Order order = testVendor.Orders[i];
         Order expectedOrder = expectedList[i];
+
         Assert.AreEqual(expectedOrder.Title, order.Title);
         Assert.AreEqual(expectedOrder.Description, order.Description);
         Assert.AreEqual(expectedOrder.Price, order.Price);
