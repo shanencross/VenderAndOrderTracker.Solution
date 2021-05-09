@@ -3,7 +3,6 @@ namespace VendorAndOrderTracker.Models
   public class Order
   {
     public string Title { get; }
-  
     public string Description { get; }
     public float Price { get; }
     public string Date { get; }
@@ -15,5 +14,4 @@ namespace VendorAndOrderTracker.Models
       Date = date;
     }
   }
-
 }
