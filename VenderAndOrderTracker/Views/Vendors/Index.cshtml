@@ -1,0 +1,21 @@
+@using VendorAndOrderTracker.Models;
+
+<h1>List of Vendors</h1>
+<p>Here is a list of all of your current vendors:<p>
+@if (Model.Count == 0)
+{
+  <p>No vendors added yet.</p>
+}
+else
+{
+  <ul>
+    @foreach (Vendor vendor in Model)
+    {
+      <li>vendor.Name</li>
+      <ul>
+        <li>vendor.Description</li>
+      </ul>
+    }
+  </ul>
+}
+<a href="/vendors/new">Add a new vendor</a>
