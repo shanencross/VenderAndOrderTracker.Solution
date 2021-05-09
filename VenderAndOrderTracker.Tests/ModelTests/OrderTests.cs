@@ -21,7 +21,7 @@ namespace VendorAndOrderTracker.ModelTests
     [TestMethod]
     public void GetTitle_ReturnsTitle_String()
     {
-      string expectedTitle = "Croisssants";
+      string expectedTitle = "Croissants";
       Assert.AreEqual(testOrder.Title, expectedTitle);
     }
 
@@ -42,7 +42,7 @@ namespace VendorAndOrderTracker.ModelTests
     [TestMethod]
     public void GetDate_ReturnsDate_String()
     {
-      string expectedDate = "Feburary 7, 2025";
+      string expectedDate = "February 7, 2025";
       Assert.AreEqual(testOrder.Date, expectedDate);
     }
   }
