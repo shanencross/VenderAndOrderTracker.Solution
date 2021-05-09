@@ -34,14 +34,16 @@ namespace VendorAndOrderTracker.ModelTests
     public void GetName_ReturnsName_String()
     {
       string expectedName = "Suzie's Cafe";
-      Assert.AreEqual(testVendor.Name, expectedName);
+      string result = testVendor.Name;
+      Assert.AreEqual(expectedName, result);
     }
 
     [TestMethod]
     public void GetDescription_ReturnsDescription_String()
     {
       string expectedDescription = "A happy and cozy little cafe!";
-      Assert.AreEqual(testVendor.Description, expectedDescription);
+      string result = testVendor.Description;
+      Assert.AreEqual(expectedDescription, testVendor.Description);
     }
 
     [TestMethod]
@@ -56,10 +58,10 @@ namespace VendorAndOrderTracker.ModelTests
       {
         Order order = testVendor.Orders[i];
         Order expectedOrder = expectedList[i];
-        Assert.AreEqual(order.Title, expectedOrder.Title);
-        Assert.AreEqual(order.Description, expectedOrder.Description);
-        Assert.AreEqual(order.Price, expectedOrder.Price);
-        Assert.AreEqual(order.Date, expectedOrder.Date);
+        Assert.AreEqual(expectedOrder.Title, order.Title);
+        Assert.AreEqual(expectedOrder.Description, order.Description);
+        Assert.AreEqual(expectedOrder.Price, order.Price);
+        Assert.AreEqual(expectedOrder.Date, order.Date);
       }
     }
 
@@ -67,9 +69,20 @@ namespace VendorAndOrderTracker.ModelTests
     public void GetId_ReturnsCategoryId_Int()
     {
       int result = testVendor.Id;
-
-      //Assert
       Assert.AreEqual(1, result);
+    }
+
+    [TestMethod]
+    public void Find_ReturnsVendorWithCorrectId_Vendor()
+    {
+      Vendor otherTestVendor = new Vendor("Bob's Bread Stand", "A convenient little outdoor bread stand!");
+      Order testOrder1 = new Order("Sourdough", "12 bags of sourdough bread", 50.99f, "February 3, 2025");
+      Order testOrder2 = new Order("Ciabatta", "20 bags of ciabatta bread", 28.99f, "March 3, 2025");
+      otherTestVendor.AddOrder(testOrder1);
+      otherTestVendor.AddOrder(testOrder2);
+      
+      Vendor result = Vendor.Find(2);
+      Assert.AreEqual(otherTestVendor, result);
     }
     
     [TestMethod]
@@ -82,7 +95,8 @@ namespace VendorAndOrderTracker.ModelTests
       otherTestVendor.AddOrder(testOrder2);
 
       List<Vendor> expectedVendorList = new List<Vendor> { testVendor, otherTestVendor };
-      CollectionAssert.AreEqual(Vendor.GetAll(), expectedVendorList);
+      List<Vendor> result = Vendor.GetAll();
+      CollectionAssert.AreEqual(expectedVendorList, result);
     }
 
     [TestMethod]
@@ -93,9 +107,10 @@ namespace VendorAndOrderTracker.ModelTests
       Order testOrder2 = new Order("Ciabatta", "20 bags of ciabatta bread", 28.99f, "March 3, 2025");
       otherTestVendor.AddOrder(testOrder1);
       otherTestVendor.AddOrder(testOrder2);
-
-      List<Vendor> expectedVendorList = new List<Vendor> { testVendor, otherTestVendor };
-      CollectionAssert.AreEqual(Vendor.GetAll(), expectedVendorList);
+      List<Vendor> expectedVendorList = new List<Vendor>();
+      Vendor.ClearAll();
+      List<Vendor> result = Vendor.GetAll();
+      CollectionAssert.AreEqual(expectedVendorList, result);
     }
   }
 }
