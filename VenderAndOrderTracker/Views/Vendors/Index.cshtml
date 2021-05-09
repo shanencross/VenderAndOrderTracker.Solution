@@ -11,10 +11,7 @@ else
   <ul>
     @foreach (Vendor vendor in Model)
     {
-      <li>vendor.Name</li>
-      <ul>
-        <li>vendor.Description</li>
-      </ul>
+      <li><a href="/vendors/@vendor.Id">vendor.Name</a></li>
     }
   </ul>
 }
