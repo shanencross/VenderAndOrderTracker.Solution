@@ -13,10 +13,17 @@ namespace VendorAndOrderTracker.Controllers
       return View(allVendors);
     }
 
-    [HttpGet("vendors/new")]
+    [HttpGet("/vendors/new")]
     public ActionResult New()
     {
       return View();     
+    }
+
+    [HttpGet("/vendors/{id}")]
+    public ActionResult Show(int id)
+    {
+      Vendor foundVendor = Vendor.Find(id);
+      return View(foundVendor);
     }
 
     [HttpPost("/vendors")]
