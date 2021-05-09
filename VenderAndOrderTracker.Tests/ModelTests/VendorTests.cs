@@ -8,11 +8,13 @@ namespace VendorAndOrderTracker.ModelTests
   [TestClass]
   public class VendorTests : IDisposable
   {
+    private Vendor testVendor;
+    
     public void Dispose()
     {
       Vendor.ClearAll();
     }
-    private Vendor testVendor;
+
     public VendorTests()
     {
       testVendor = new Vendor("Suzie's Cafe", "A happy and cozy little cafe!");
@@ -59,6 +61,15 @@ namespace VendorAndOrderTracker.ModelTests
         Assert.AreEqual(order.Price, expectedOrder.Price);
         Assert.AreEqual(order.Date, expectedOrder.Date);
       }
+    }
+
+    [TestMethod]
+    public void GetId_ReturnsCategoryId_Int()
+    {
+      int result = testVendor.Id;
+
+      //Assert
+      Assert.AreEqual(1, result);
     }
     
     [TestMethod]
